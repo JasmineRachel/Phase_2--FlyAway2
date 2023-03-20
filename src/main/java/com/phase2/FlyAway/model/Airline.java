@@ -19,8 +19,9 @@ public class Airline {
 		
 	}
 	public Airline(int id, String airlineName) {
-			this.id = id;
-			this.airlineName = airlineName;
+		super();
+		this.id = id;
+		this.airlineName = airlineName;
 	}
 	
 

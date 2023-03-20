@@ -15,7 +15,7 @@ public class AirlineService {
 	@Autowired
 	AirlineRepo airlineRepo;
 	
-	public Airline getAirlineById(Integer id) {
+	public Airline getAirlineById(int id) {
 		return airlineRepo.findById(id).get();
 	}
 	

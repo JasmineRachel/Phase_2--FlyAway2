@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,12 @@ public class AirlineController {
 	@GetMapping("/airlines")
 	public List<Airline> getAirlines(){
 		return airlineService.getAirlines();
+	}
+	
+	@GetMapping("/airlines/{id}")
+	public Airline getAirlineById(@PathVariable(value="id")int id){
+		return airlineService.getAirlineById(id);
+		
 	}
 	
 	@PostMapping("add_airline")
