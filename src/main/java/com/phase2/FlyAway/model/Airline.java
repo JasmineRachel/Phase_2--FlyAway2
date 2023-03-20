@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 @Entity
 public class Airline {
 	@Id
-	 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 	
