@@ -14,22 +14,22 @@ public class BookingService {
 	@Autowired
 	BookingRepo bookingRepo;
 	
-	public Booking getAirlineById(int id) {
+	public Booking getBookingById(int id) {
 		return bookingRepo.findById(id).get();
 	}
 	
-	public List<Booking> getAirlines(){
+	public List<Booking> getAllBookings(){
 		List<Booking> bookings = new ArrayList<Booking>();
 		bookingRepo.findAll().forEach(booking -> bookings.add(booking));
 		return bookings;
 	}
 	
-	public void createAirline(Booking booking) {
+	public void createBooking(Booking booking) {
 	
 		bookingRepo.save(booking);
 	}
 	
-	public void deleteAirline(Integer id) {
+	public void deleteBooking(Integer id) {
 		bookingRepo.deleteById(id);
 	}
 }

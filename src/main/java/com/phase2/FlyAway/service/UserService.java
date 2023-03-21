@@ -29,7 +29,7 @@ public class UserService {
 		userRepo.save(user);
 	}
 	
-	public void deleteAirline(int id) {
+	public void deleteUser(int id) {
 		userRepo.deleteById(id);
 	}
 }
