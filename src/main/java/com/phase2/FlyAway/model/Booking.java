@@ -11,8 +11,11 @@ public class Booking {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+	
+	//make this User one to one
 	@Column(name="customer_name")
     private String customerName;
+	// make this Flight one to one
 	@Column(name="flight_id")
     private String flightId;
 	

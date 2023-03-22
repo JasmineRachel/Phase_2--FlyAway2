@@ -14,15 +14,16 @@ public class Flight {
 	
 	@Column(name="source")
     private String source;
-	@Column(name="destinated")
+	@Column(name="destination")
     private String destination;
 	@Column(name="date")
     public String date;
 	@Column(name="price")
     public double price;
+	//one to one Arline
 	@Column(name="airline_id")
     public int airlineId;
-	
+	// one flight can have many locations because source & destination? one to many?
 	public Flight() {
 		
 	}
