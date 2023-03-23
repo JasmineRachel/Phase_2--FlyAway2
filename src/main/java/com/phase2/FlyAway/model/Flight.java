@@ -21,19 +21,19 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
-//	@Column(name="source")
-//    private String source;
+	@Column(name="source")
+    private String source;
 	
-	@JsonManagedReference
-    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Location> sources = new ArrayList<>();
+//	@JsonManagedReference
+//    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Location> sources = new ArrayList<>();
+//	
+//	@JsonManagedReference
+//    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Location> destinations = new ArrayList<>();
 	
-	@JsonManagedReference
-    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Location> destinations = new ArrayList<>();
-	
-//	@Column(name="destination")
-//    private String destination;
+	@Column(name="destination")
+    private String destination;
 	@Column(name="date")
     public String date;
 	@Column(name="price")
@@ -45,10 +45,10 @@ public class Flight {
 	public Flight() {
 		
 	}
-	public Flight(int id, List<Location> sources, List<Location> destinations, String date, double price, int airlineId) {
+	public Flight(int id, String source, String destination, String date, double price, int airlineId) {
 		this.id = id;
-		this.sources = sources;
-		this.destinations = destinations;
+		this.source = source;
+		this.destination = destination;
 		this.date = date;
 		this.price = price;
 		this.airlineId = airlineId;
@@ -61,18 +61,19 @@ public class Flight {
 		this.id = id;
 	}
 	
-	public List<Location> getSources() {
-		return sources;
+	public String getSource() {
+		return source;
 	}
-	public void setSources(List<Location> sources) {
-		this.sources = sources;
+	public void setSource(String source) {
+		this.source = source;
 	}
-	public List<Location> getDestinations() {
-		return destinations;
+	public String getDestination() {
+		return destination;
 	}
-	public void setDestinations(List<Location> destinations) {
-		this.destinations = destinations;
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
+
 	public String getDate() {
 		return date;
 	}

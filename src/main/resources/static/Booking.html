@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>FlyAway Booking</title>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	    <script src="booking.js"></script>
+	</head>
+	
+	
+	<body>
+		<div>
+		<p><script> getLocations('http://localhost:8080/locations') </script></p>
+			<form>
+			<label for="outbound">out-bound:</label>
+			<select name="outbound_location" id="outbound_location">
+			  <option value=""></option>
+			</select>
+			<label for="inbound">in-bound:</label>
+			<select name="inbound_location" id="inbound_location">
+			  <option value=""></option>
+			</select>
+			</form>
+		</div>
+	</body>
+</html>

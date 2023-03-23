@@ -3,6 +3,7 @@ package com.phase2.FlyAway.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import com.phase2.FlyAway.model.Location;
 import com.phase2.FlyAway.service.LocationService;
 
 @RestController
+@CrossOrigin
 public class LocationController {
 	@Autowired
 	LocationService locationService;
