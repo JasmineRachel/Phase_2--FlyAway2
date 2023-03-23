@@ -12,11 +12,15 @@ async function getLocations(url){
 		
 		destinationSelect = document.getElementById('inbound_location');
 		destinationSelect.options[destinationSelect.options.length] = new Option(value.locationName);
-		console.log(value.locationName);
+		
 	}
 	
 	data.forEach(myFunction);	
 }
 
 const locations = getLocations(api_url);
+
+function updateTextInput(val) {
+  document.getElementById('textInput').value=val; 
+}
 
