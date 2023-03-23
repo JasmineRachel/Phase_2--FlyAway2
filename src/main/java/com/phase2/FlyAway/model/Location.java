@@ -1,5 +1,9 @@
 package com.phase2.FlyAway.model;
 
+import jakarta.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +17,10 @@ public class Location {
     private int id;
 	@Column(name="location_name")
     public String locationName;
+	
+	@JsonBackReference
+    @ManyToOne
+    private Flight flight;
 	
 	public Location() {
 		

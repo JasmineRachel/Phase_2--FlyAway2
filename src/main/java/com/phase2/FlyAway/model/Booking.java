@@ -13,8 +13,8 @@ public class Booking {
     private int id;
 	
 	//make this User one to one
-	@Column(name="customer_name")
-    private String customerName;
+	@Column(name="customer_id")
+    private String customerId;
 	// make this Flight one to one
 	@Column(name="flight_id")
     private String flightId;
@@ -23,10 +23,10 @@ public class Booking {
 		
 	}
 	
-	public Booking(int id, String customerName, String flightId) {
+	public Booking(int id, String customerId, String flightId) {
 		super();
 		this.id = id;
-		this.customerName = customerName;
+		this.customerId = customerId;
 		this.flightId = flightId;
 	}
 	
@@ -36,11 +36,11 @@ public class Booking {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCustomerName() {
-		return customerName;
+	public String getCustomerId() {
+		return customerId;
 	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+	public void setCustomerName(String customerId) {
+		this.customerId = customerId;
 	}
 	public String getFlightId() {
 		return flightId;
