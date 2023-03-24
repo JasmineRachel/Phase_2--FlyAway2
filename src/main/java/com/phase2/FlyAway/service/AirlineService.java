@@ -25,9 +25,14 @@ public class AirlineService {
 		return airlines;
 	}
 	
-	public void createAirline(Airline airline) {
-	
-		airlineRepo.save(airline);
+	public void createAirline() {
+		Airline airline1 = new Airline("British AirWays");
+		Airline airline2 = new Airline("Virgin Atlantic");
+		Airline airline3 = new Airline("Ryanair");
+		airlineRepo.save(airline1);
+		airlineRepo.save(airline2);
+		airlineRepo.save(airline3);
+		
 	}
 	
 	public void deleteAirline(Integer id) {

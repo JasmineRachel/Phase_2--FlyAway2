@@ -9,24 +9,32 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Location {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    public int id;
+	
 	@Column(name="location_name")
     public String locationName;
 	
 //	@JsonBackReference
-//    @ManyToOne
-//    private Flight flight;
+    @OneToOne(mappedBy="destination")
+    private Flight flight;
 	
+	public Flight getFlight() {
+		return flight;
+	}
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
 	public Location() {
 		
 	}
-	public Location(int id, String locationName) {
-		this.id = id;
+	public Location(String locationName) {
 		this.locationName = locationName;
 	}
 	

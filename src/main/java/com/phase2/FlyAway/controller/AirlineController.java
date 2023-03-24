@@ -21,6 +21,7 @@ public class AirlineController {
 	
 	@GetMapping("/airlines")
 	public List<Airline> getAirlines(){
+		airlineService.createAirline();
 		return airlineService.getAirlines();
 	}
 	
@@ -30,10 +31,10 @@ public class AirlineController {
 		
 	}
 	
-	@PostMapping("add_airline")
-	public int createAirline(@RequestBody Airline airline) {
-		airlineService.createAirline(airline);
-		return airline.getId();
-	}
+//	@PostMapping("add_airline")
+//	public int createAirline(@RequestBody Airline airline) {
+//		airlineService.createAirline(airline);
+//		return airline.getId();
+//	}
 
 }

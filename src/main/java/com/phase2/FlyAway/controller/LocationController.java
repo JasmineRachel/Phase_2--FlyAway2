@@ -21,6 +21,7 @@ public class LocationController {
 	
 	@GetMapping("/locations")
 	public List<Location> getAllLocations(){
+		locationService.createLocation();
 		return locationService.getAllLocations();	
 	}
 	
@@ -29,10 +30,15 @@ public class LocationController {
 		return locationService.getLocationById(id);
 	}
 	
-	@PostMapping("/add_location")
-	public int createLocation(@RequestBody Location location) {
-		locationService.createLocation(location);
-		return location.getId();
-	}
+//	@PostMapping("/locations")
+//	public void createLocation() {
+//		
+//
+//	}
+//	@PostMapping("/add_locations")
+//	public int createLocation(@RequestBody Location location) {
+//		locationService.createLocation(location);
+//		return location.getId();
+//	}
 
 }

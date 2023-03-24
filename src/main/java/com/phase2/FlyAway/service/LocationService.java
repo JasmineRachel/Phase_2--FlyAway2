@@ -24,8 +24,13 @@ public class LocationService {
 		return locations;
 	}
 	
-	public void createLocation(Location location) {
-		locationRepo.save(location);
+	public void createLocation() {
+		Location location1 = new Location("London");
+		Location location2 = new Location("Paris");
+		Location location3 = new Location("Amsterdam");
+		locationRepo.save(location1);
+		locationRepo.save(location2);
+		locationRepo.save(location3);
 	}
 	
 	public void deleteLocation(int id) {

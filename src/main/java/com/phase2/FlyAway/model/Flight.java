@@ -1,9 +1,5 @@
 package com.phase2.FlyAway.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -13,41 +9,36 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Flight {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    public int id;
 	
-	@Column(name="source")
-    private String source;
+	@JsonManagedReference
+    @OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="destination_id", nullable=false)
+	private Location destination;
 	
-//	@JsonManagedReference
-//    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Location> sources = new ArrayList<>();
-//	
-//	@JsonManagedReference
-//    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Location> destinations = new ArrayList<>();
+	@JsonManagedReference
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="airline_id", nullable=false)
+	private Airline airlineId;
 	
-	@Column(name="destination")
-    private String destination;
 	@Column(name="date")
-    public String date;
+    private String date;
 	@Column(name="price")
-    public double price;
-	//one to one Arline
-	@Column(name="airline_id")
-    public int airlineId;
-	// one flight can have many locations because source & destination? one to many?
+    private double price;
+	
 	public Flight() {
 		
 	}
-	public Flight(int id, String source, String destination, String date, double price, int airlineId) {
-		this.id = id;
-		this.source = source;
+	public Flight(Location destination, String date, double price, Airline airlineId) {
+//		this.source = source;
 		this.destination = destination;
 		this.date = date;
 		this.price = price;
@@ -61,22 +52,45 @@ public class Flight {
 		this.id = id;
 	}
 	
-	public String getSource() {
-		return source;
-	}
-	public void setSource(String source) {
-		this.source = source;
-	}
-	public String getDestination() {
+//	public Location getSource() {
+//		return source;
+//	}
+//	public void setSource(Location source) {
+//		this.source = source;
+//	}
+	
+//	public int getDestination() {
+//		return destination;
+//	}
+//	public void setDestination(int destination) {
+//		this.destination = destination;
+//	}
+	
+	
+//	public int getAirlineId() {
+//		return airlineId;
+//	}
+//	public void setAirlineId(int airlineId) {
+//		this.airlineId = airlineId;
+//	}
+	public Location getDestination() {
 		return destination;
 	}
-	public void setDestination(String destination) {
+	public void setDestination(Location destination) {
 		this.destination = destination;
 	}
-
+	
+	public Airline getAirlineId() {
+		return airlineId;
+	}
+	
+	public void setAirlineId(Airline airlineId) {
+		this.airlineId = airlineId;
+	}
 	public String getDate() {
 		return date;
 	}
+	
 	public void setDate(String date) {
 		this.date = date;
 	}
@@ -86,11 +100,6 @@ public class Flight {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getAirlineId() {
-		return airlineId;
-	}
-	public void setAirlineId(int airlineId) {
-		this.airlineId = airlineId;
-	}
+
 	
 }
