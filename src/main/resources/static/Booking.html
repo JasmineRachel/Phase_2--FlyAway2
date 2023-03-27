@@ -4,39 +4,27 @@
 	    <title>FlyAway Booking</title>
 	    <script src="booking.js"></script>
 	</head>
-	
+	<style>
+		table, th, td {
+		  border:1px solid black;
+		}
+	</style>
 	
 	<body>
 		<div>
 			<h2>Fly Away Booking Form</h2>
 			<form action="/create_booking" method="">
-			<div>
-				<label for="outbound">out-bound:</label>
-				<select name="outbound_location" id="outbound_location">
-				  <option value=""></option>
-				</select>
-				
-				<label for="inbound">in-bound:</label>
-				<select name="inbound_location" id="inbound_location">
-				  <option value=""></option>
-				</select>
-			</div>
-			
-			<div>
-				<label for="start">travel date:</label>
-	
-				<input type="date" id="start" name="trip-start"
-				       value="2023-03-23"
-				       min="2023-03-23">
-			</div>
-			
-			 <div>
-			 	<input type="range" id="persons_qty" name="persons_qty" 
-					min="1" max="10" value="1" step="1" onchange="updateTextInput(this.value);">
-  				<label for="persons_qty">how many people?</label>
-  				<input type="text" id="textInput" value="">
-			 </div>    
-	         
+			<table>
+			  <tr>
+			    <th>Destination</th>
+			    <th>Airline</th>
+			    <th>Date</th>
+			    <th>Price £</th>
+			  </tr>
+			  <tbody id="flights_data">
+			    
+			  </tbody>
+			</table>
 	         <input type="submit" value="Book your flight!" />
   			
 			</form>

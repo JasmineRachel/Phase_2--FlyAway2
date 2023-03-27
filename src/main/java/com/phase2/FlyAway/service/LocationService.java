@@ -25,7 +25,7 @@ public class LocationService {
 	}
 	
 	public void createLocation() {
-		Location location1 = new Location("London");
+		Location location1 = new Location("Barcelona");
 		Location location2 = new Location("Paris");
 		Location location3 = new Location("Amsterdam");
 		locationRepo.save(location1);

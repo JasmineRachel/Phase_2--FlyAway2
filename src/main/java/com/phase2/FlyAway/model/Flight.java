@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
@@ -19,8 +20,13 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 	
+//	@JsonManagedReference
+//    @ManyToMany(mappedBy="flight")
+//	@JoinColumn(name="source_id", nullable=false)
+//	private Location source;
+	
 	@JsonManagedReference
-    @OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="destination_id", nullable=false)
 	private Location destination;
 	
@@ -59,20 +65,6 @@ public class Flight {
 //		this.source = source;
 //	}
 	
-//	public int getDestination() {
-//		return destination;
-//	}
-//	public void setDestination(int destination) {
-//		this.destination = destination;
-//	}
-	
-	
-//	public int getAirlineId() {
-//		return airlineId;
-//	}
-//	public void setAirlineId(int airlineId) {
-//		this.airlineId = airlineId;
-//	}
 	public Location getDestination() {
 		return destination;
 	}

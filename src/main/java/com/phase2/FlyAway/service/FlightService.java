@@ -31,6 +31,7 @@ public class FlightService {
 	}
 	
 	public void createFlight() {
+//		Location source = locationService.getLocationById(3);
 		Location destination = locationService.getLocationById(2);
 		Airline airlineId = airlineService.getAirlineById(1);
 		Flight flight1 = new Flight(destination, "03-08-2023", 200.00, airlineId);

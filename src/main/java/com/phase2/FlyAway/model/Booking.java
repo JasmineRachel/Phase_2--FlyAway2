@@ -25,7 +25,6 @@ public class Booking {
 	
 	public Booking(int id, String customerId, String flightId) {
 		super();
-		this.id = id;
 		this.customerId = customerId;
 		this.flightId = flightId;
 	}
