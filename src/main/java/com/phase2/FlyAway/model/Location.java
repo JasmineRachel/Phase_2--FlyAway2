@@ -23,7 +23,7 @@ public class Location {
 	@Column(name="location_name")
     public String locationName;
 	
-//	@JsonBackReference
+	@JsonBackReference
     @OneToOne(mappedBy="destination")
     private Flight flight;
 	

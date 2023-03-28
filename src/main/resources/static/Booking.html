@@ -12,21 +12,20 @@
 	
 	<body>
 		<div>
-			<h2>Fly Away Booking Form</h2>
-			<form action="/create_booking" method="">
-			<table>
-			  <tr>
-			    <th>Destination</th>
-			    <th>Airline</th>
-			    <th>Date</th>
-			    <th>Price £</th>
-			  </tr>
-			  <tbody id="flights_data">
-			    
-			  </tbody>
-			</table>
-	         <input type="submit" value="Book your flight!" />
-  			
+			<h2>Fly Away Flight Search</h2>
+			<form onSubmit="getFormValue()" action="" method="">
+				<table>
+				<tr>
+					<th>Destination</th>
+					<th>Airline</th>
+					<th>Date</th>
+					<th>Price (pp) </th>
+					<th>how many people</th>
+				</tr>
+				<tbody id="flights_data">
+					
+				</tbody>
+				</table>
 			</form>
 		</div>
 	</body>

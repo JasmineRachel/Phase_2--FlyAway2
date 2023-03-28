@@ -21,11 +21,16 @@ public class FlightController {
 	@Autowired
 	FlightService flightService;
 	
-	@GetMapping("/flights")
-	public List<Flight> getAllFlights(Location location, Airline airline){
+	@GetMapping("/load_flights")
+	public void loadFlights(){
 		flightService.createFlight();
+	}
+	
+	@GetMapping("/flights")
+	public List<Flight> getAllFlights(){
 		return flightService.getAllFlights();	
 	}
+	
 	@GetMapping("/flights/{id}")
 	public Flight getFlightById(@PathVariable int id){
 		return flightService.getFlightById(id);
