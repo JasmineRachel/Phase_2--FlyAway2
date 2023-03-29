@@ -25,7 +25,11 @@ public class BookingService {
 	}
 	
 	public void createBooking(Booking booking) {
-	
+		//this is how i would like the booking creation to go...
+		//TODO: amend the booking model and add join types so that this logic works
+		//Flight flight = flightService.getflightById(flightId)
+		// User customer = userService.getUserById(customerId)
+		//Booking booking = new Booking(flight, customer, totalBookingPrice)
 		bookingRepo.save(booking);
 	}
 	

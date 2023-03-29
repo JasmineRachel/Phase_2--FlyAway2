@@ -18,7 +18,7 @@ public class Booking {
 	// make this Flight one to one
 	@Column(name="flight_id")
     private String flightId;
-	
+	//add a total price column?
 	public Booking() {
 		
 	}

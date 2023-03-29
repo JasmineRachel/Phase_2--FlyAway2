@@ -10,13 +10,13 @@ async function getFlights(url){
 	
 	data.forEach((flight) => {
 		table +="<tr>";
-		table +="<td style='display:none;'> <input type='text' id='flightId' name='flightId' value=" + flight.id + "/> </td>";
+		table +="<td style='display:none;'> <input type='text' id='flightId' name='flightId' value=" + flight.id + " readonly /> </td>";
 		table +="<td>" + flight.destination.locationName + "</td>";
 		table +="<td>" + flight.airlineId.airlineName + "</td>";
 		table +="<td>" + flight.date + "</td>";
-		table +="<td>" + " £" + flight.price + "</td>";
+		table +="<td>" + "<input type='text' id='price' name='price' value=" + flight.price + " readonly />" + "</td>";
 		table +="<td> <input id='travelerNo' type='text' name='travelerNo'</td>";
-		table +="<td> <input type='submit' value='Book this flight!'/></td></tr>";
+		table +="<td> <input type='button' onclick='return createBooking()' value='Book this flight!'/></td></tr>";
 	});
 	
 	document.getElementById('flights_data').innerHTML = table;
@@ -24,23 +24,30 @@ async function getFlights(url){
 
 const locations = getFlights(flights_list);
 
-function getFormValue() {
+function createBooking() {
+	
 	const flightId = document.getElementById("flightId").value;
+	const flightPrice = document.getElementById("price").value;
 	const travelerNo = document.getElementById("travelerNo").value;
-	console.log("input: ", flightId + travelerNo);
-}
-//add the total price 
-async function createBooking(url, flightId, travelerNo){
-	data = {flightId: flightId, travelerNo: travelerNo, totalPrice: ""}
-	const response = await fetch(url, {
-		method: "POST",
-		headers:{ "Content-Type": "application/json"},
-		body: JSON.stringify(data)
-	});
-	const data = await response.json()
+	const totalPrice = flightPrice * travelerNo;
+
+	console.log("input: id:", flightId, ", flightPrice: ", flightPrice, ", persons: ", travelerNo, ", totalPrice: ",  totalPrice);
+	
+	//TODO: work out how you're going to add the user's data to the same entry that the flight booking details will!!!
+
+	// async function createBooking(url, flightId, travelerNo, totalPrice){
+	// 	data = {flightId: flightId, travelerNo: travelerNo, totalPrice: totalPrice}
+	// 	const response = await fetch(url, {
+	// 		method: "POST",
+	// 		headers:{ "Content-Type": "application/json"},
+	// 		body: JSON.stringify(data)
+	// 	});
+	// 	const data = await response.json()
+	// }
 }
 
-createBooking();
+
+
 // function updateTextInput(val) {
 //   document.getElementById('textInput').value=val; 
 // }
