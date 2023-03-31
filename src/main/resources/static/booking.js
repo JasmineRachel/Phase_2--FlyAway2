@@ -99,10 +99,4 @@ async function registerCustomer(){
 
 }
 
-// console.log("booking info", bookingInfo);
-
-
-// function updateTextInput(val) {
-//   document.getElementById('textInput').value=val; 
-// }
 
