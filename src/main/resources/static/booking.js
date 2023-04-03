@@ -2,18 +2,19 @@ const flights_list = "http://localhost:8080/flights"
 const users_list = "http://localhost:8080/users"
 //TODO: how to return the data??
 //when i use return, data appears undefined
-function getUsers(url){
-	const data = fetch(url)
-		.then(response => response.json())
-		.then(data => {
-			console.log(data);
-		})
-	return data;
+async function getCurrentUser(url){
+
+	const response = await fetch(url);
+	const data = await response.json();
+
+	return data[data.length -1];
+
+	
 };
 
 async function getFlights(url){
 	const response = await fetch(url);
-	var data = await response.json();
+	const data = await response.json();
 	
 	console.log("data:", data);
 	
@@ -70,23 +71,47 @@ function createBooking() {
 //url = http://localhost:8080/users ${curentUserId}'
 
 async function registerCustomer(){
+	console.log("booking info: ", bookingInfo);
+
 	const customerName = document.getElementById("customerName").value;
 	const password = document.getElementById("password").value;
 	const role = document.getElementById("role").value;
 	
 	
-	data = {username: customerName, password: password, role: role}
+	customerData = {username: customerName, password: password, role: role}
 	// bookingInfo.setItem("customerName", customerName)
 	
 	// console.log("customer input", data);
 	
-	const response = await fetch('http://localhost:8080/add_user', {
+	fetch('http://localhost:8080/add_user', {
 		method: "POST",
 		headers:{ "Content-Type": "application/json"},
-		body: JSON.stringify(data)
+		body: JSON.stringify(customerData)
+	})
+	.then((resp) => {
+		console.log("create user response status: ", resp.status)
+	});
+	
+	const currentUser = getCurrentUser(users_list)
+	console.log("customer created", currentUser)
+
+	bookingData = {
+		customerId: currentUser,
+		flightId: bookingInfo.getItem("flightId"), 
+		travelerTravelers: bookingInfo.getItem("totalTravelers"), 
+		totalPrice: bookingInfo.getItem("totalPrice")
+	}
+
+	fetch('http://localhost:8080/create_booking', {
+		method: "POST",
+		headers:{ "Content-Type": "application/json"},
+		body: JSON.stringify(bookingData)
+	}).then((resp)=>{
+		console.log("create booking response status", resp.status)
 	});
 
-	console.log("customer created", getUsers(users_list))
+
+	// 	const data = await response.json()
 	// const users = getUsers(users_list)
 	// let length = users.length;
 	// console.log("user list length: ", users)
